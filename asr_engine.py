@@ -21,7 +21,7 @@ class QwenASREngine:
     
     def __init__(
         self,
-        model_name: str = "../../Qwen3-ASR-1.7B",
+        model_name: str = "Qwen3-ASR-1.7B",
         device: str = "auto",
         dtype: str = "bfloat16",
         max_inference_batch_size: int = 32,
@@ -406,7 +406,7 @@ if __name__ == "__main__":
     # 初始化引擎
     try:
         engine = QwenASREngine(
-            model_name="../../Qwen3-ASR-1.7B",
+            model_name="Qwen3-ASR-1.7B",
             device="cpu",  # 测试时使用CPU
             dtype="float32",  # CPU使用float32
         )

@@ -81,7 +81,8 @@ class HotwordManager:
         """
         if word:
             self._hotwords[word] = weight
-            self._hotword_list.append(word)
+            if word not in self._hotword_list:
+                self._hotword_list.append(word)
             logger.info(f"添加热词: {word} (权重: {weight})")
     
     def remove_hotword(self, word: str) -> bool:

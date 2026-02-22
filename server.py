@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 class ASRSession:
     """ASR会话管理."""
     
-    def __init__(self, session_id: str, engine: QwenASREngine, config: dict, hotword_manager: HotwordManager = None):
+    def __init__(self, session_id: str, engine: QwenASREngine, config: dict, hotword_manager: Optional[HotwordManager] = None):
         """初始化会话.
         
         Args:
@@ -62,7 +62,7 @@ class ASRSession:
         
         # 识别状态
         self.is_recognizing = False
-        self.language = config.get("language", "zh")
+        self.language = config.get("language", "auto")
         self.enable_itn = config.get("enable_itn", True)
         
         # 统计
@@ -161,7 +161,7 @@ class ASRServer:
         # 初始化ASR引擎
         model_cfg = config.get("model", {})
         self.engine = QwenASREngine(
-            model_name=model_cfg.get("name", "./Qwen3-ASR-1.7B"),
+            model_name=model_cfg.get("name", "Qwen3-ASR-1.7B"),
             device=model_cfg.get("device", "auto"),
             dtype=model_cfg.get("dtype", "bfloat16"),
             max_inference_batch_size=model_cfg.get("max_inference_batch_size", 32),
@@ -521,7 +521,7 @@ def load_config(config_path: str) -> dict:
     """
     default_config = {
         "model": {
-            "name": "../../Qwen3-ASR-1.7B",
+            "name": "Qwen3-ASR-1.7B",
             "device": "auto",
             "dtype": "bfloat16",
             "max_inference_batch_size": 32,

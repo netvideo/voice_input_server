@@ -2,9 +2,9 @@
 # 使用 qwen_asr 库的 Qwen3ASRModel
 model:
   # 模型路径或HuggingFace repo id
-  # 本地路径示例: "../../Qwen3-ASR-1.7B" (相对于当前目录)
+  # 本地路径示例: "Qwen3-ASR-1.7B" (相对于当前目录，不要加 ./ 前缀)
   # HuggingFace示例: "Qwen/Qwen3-ASR-1.7B"
-  name: "../../Qwen3-ASR-1.7B"
+  name: "Qwen3-ASR-1.7B"
   
   # 运行设备: auto, cuda:0, cuda, cpu
   device: "auto"

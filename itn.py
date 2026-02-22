@@ -36,7 +36,10 @@ def _repl_num(m):
     return _conv(m.group(0))
 
 def itn(text, language='zh-CN'):
-    if not text or language != 'zh-CN':
+    if not text:
+        return text
+    zh_languages = {'zh', 'zh-cn', 'zh-tw', 'chinese'}
+    if language and language.lower() not in zh_languages:
         return text
     text = re.sub(r'第([零一二三四五六七八九十百]+)(章|节|页|卷|部|集|篇)', _repl_chapter, text)
     text = re.sub(r'([零一二三四五六七八九十]{2,4})年', _repl_year, text)
