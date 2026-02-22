@@ -1,0 +1,81 @@
+# Qwen3-ASR 模型配置
+# 使用 qwen_asr 库的 Qwen3ASRModel
+model:
+  # 模型路径或HuggingFace repo id
+  # 本地路径示例: "../../Qwen3-ASR-1.7B" (相对于当前目录)
+  # HuggingFace示例: "Qwen/Qwen3-ASR-1.7B"
+  name: "../../Qwen3-ASR-1.7B"
+  
+  # 运行设备: auto, cuda:0, cuda, cpu
+  device: "auto"
+  
+  # 数据类型: bfloat16 (推荐), float16, float32
+  # bfloat16: 推荐用于支持bfloat16的GPU (如A100, H100, RTX 30/40系列)
+  # float16: 用于较旧的GPU
+  # float32: 用于CPU或不支持半精度的GPU
+  dtype: "bfloat16"
+  
+  # 推理批处理大小，-1表示不进行分割
+  # 较小的值可以避免OOM，但可能会降低效率
+  max_inference_batch_size: 32
+  
+  # 最大生成token数
+  max_new_tokens: 256
+  
+  # 强制对齐模型路径（可选）
+  # 设置后可支持 return_timestamps 功能
+  # forced_aligner: "./Qwen3-ASR-ForcedAligner"
+  
+# 服务器配置
+server:
+  host: "0.0.0.0"
+  port: 8765
+  max_connections: 5  # 最大并发连接数
+  timeout: 300  # 会话超时时间（秒）
+  
+# 音频配置
+audio:
+  sample_rate: 16000
+  chunk_duration: 0.1  # 100ms
+  max_audio_length: 60  # 最大音频长度（秒）
+  
+# 识别配置
+# Qwen3-ASR 支持的语言列表:
+#   Chinese (中文), English (英语), Cantonese (粤语), Arabic (阿拉伯语),
+#   German (德语), French (法语), Spanish (西班牙语), Portuguese (葡萄牙语),
+#   Indonesian (印尼语), Italian (意大利语), Korean (韩语), Russian (俄语),
+#   Thai (泰语), Vietnamese (越南语), Japanese (日语), Turkish (土耳其语),
+#   Hindi (印地语), Malay (马来语), Dutch (荷兰语), Swedish (瑞典语),
+#   Danish (丹麦语), Finnish (芬兰语), Polish (波兰语), Czech (捷克语),
+#   Filipino (菲律宾语), Persian (波斯语), Greek (希腊语), Romanian (罗马尼亚语),
+#   Hungarian (匈牙利语), Macedonian (马其顿语)
+# 使用 auto 或不设置 language 参数可进行自动语言检测
+recognition:
+  language: "auto"  # 默认语言: auto(自动检测) 或具体的语言名称
+  return_timestamps: false  # 是否返回时间戳（需要配置forced_aligner）
+  context: ""  # 默认上下文提示
+  
+# 性能配置
+performance:
+  use_fp16: true  # 使用半精度（兼容旧配置）
+  compile_model: false  # PyTorch 2.0+ 编译优化
+  num_threads: 4  # CPU线程数
+  stream_mode: true  # 流式识别模式
+
+# 热词表配置 (用于提升识别准确率)
+# 热词会在识别时作为上下文提示，帮助模型更准确地识别这些词
+hotword:
+  # 热词表文件路径 (每行一个词或短语)
+  # 格式: 词或短语 (可使用|分隔添加提示权重，如: 阿里巴巴|0.9)
+  # 示例:
+  #   阿里巴巴
+  #   opencode|0.8
+  #   甄嬛传
+  file: hotword.txt
+  
+  # 是否启用热词表
+  enabled: true
+  
+  # 上下文模板: {hotwords} 会被替换为热词列表
+  # Qwen3-ASR 支持通过 context 参数提供上下文提示
+  context_template: "请注意识别以下词语：{hotwords}"

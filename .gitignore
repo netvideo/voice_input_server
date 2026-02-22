@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 模型缓存
+model_cache/
+*.bin
+*.safetensors
+*.pth
+*.ckpt
+
+# 日志
+logs/
+*.log
+
+# 音频文件
+saved_audio/
+*.wav
+*.mp3
+*.pcm
+
+# 配置文件（本地修改）
+config_local.yaml
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 临时文件
+tmp/
+temp/

@@ -1,0 +1,126 @@
+# ASR 热词表
+# 每行一个词或短语，可使用|分隔添加权重
+# 格式: 词语 或 词语|权重(0-1)
+
+# 互联网公司
+阿里巴巴|0.9
+腾讯|0.9
+字节跳动|0.9
+美团|0.9
+京东|0.9
+百度|0.8
+网易|0.8
+小米|0.8
+华为|0.9
+
+# 编程语言
+Python|0.9
+Java|0.9
+JavaScript|0.9
+C加加|0.9
+Go语言|0.9
+Rust|0.8
+Ruby|0.8
+PHP|0.8
+Swift|0.8
+Kotlin|0.8
+TypeScript|0.9
+Scala|0.8
+
+# 框架和库
+React|0.9
+Vue|0.9
+Angular|0.8
+Django|0.9
+Flask|0.9
+Spring|0.9
+MyBatis|0.9
+Nodejs|0.9
+TensorFlow|0.9
+PyTorch|0.9
+Pandas|0.9
+NumPy|0.9
+
+# 前端技术
+HTML|0.9
+CSS|0.9
+Webpack|0.9
+Vite|0.9
+
+# 后端技术
+Redis|0.9
+MySQL|0.9
+PostgreSQL|0.9
+MongoDB|0.9
+Elasticsearch|0.9
+Kafka|0.9
+Nginx|0.9
+Docker|0.9
+Kubernetes|0.9
+
+# AI和机器学习
+人工智能|0.9
+机器学习|0.9
+深度学习|0.9
+神经网络|0.9
+大语言模型|0.9
+Transformer|0.9
+GPT|0.9
+ChatGPT|0.9
+文心一言|0.9
+通义千问|0.9
+LangChain|0.9
+向量数据库|0.9
+
+# 云计算
+AWS|0.9
+Azure|0.9
+GCP|0.9
+阿里云|0.9
+腾讯云|0.9
+华为云|0.9
+DevOps|0.9
+
+# 版本控制
+Git|0.9
+GitHub|0.9
+GitLab|0.9
+
+# 操作系统
+Windows|0.9
+Linux|0.9
+Ubuntu|0.9
+CentOS|0.9
+MacOS|0.9
+iOS|0.9
+Android|0.9
+
+# 协议
+HTTP|0.9
+HTTPS|0.9
+WebSocket|0.9
+API|0.9
+RESTful|0.9
+
+# 工具软件
+VSCode|0.9
+PyCharm|0.9
+
+# 应用平台
+微信|0.9
+支付宝|0.9
+抖音|0.9
+淘宝|0.9
+B站|0.9
+钉钉|0.9
+飞书|0.9
+
+# 科技名人
+马斯克|0.9
+乔布斯|0.9
+
+# 科技热词
+元宇宙|0.8
+区块链|0.8
+5G|0.9
+物联网|0.8
