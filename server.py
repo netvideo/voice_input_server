@@ -72,7 +72,10 @@ class ASRSession:
     def _apply_itn(self, text: str) -> str:
         """应用ITN转换."""
         if self.enable_itn and text:
-            return itn(text, self.language)
+            lang = self.language.lower() if self.language else "auto"
+            if lang in ("chinese", "zh", "zh-cn", "zh-tw"):
+                lang = "zh"
+            return itn(text, lang)
         return text
     
     def add_audio(self, audio_data: bytes):
@@ -343,7 +346,7 @@ class ASRServer:
         
         logger.info(f"    [配置] 会话创建: {session_id}")
         logger.info(f"    语言: {session.language}")
-        logger.info(f"    热词: {'启用' if session.hotword_manager.is_enabled() else '禁用'}")
+        logger.info(f"    热词: {'启用' if session.hotword_manager and session.hotword_manager.is_enabled() else '禁用'}")
         
         # 发送就绪响应
         response = {

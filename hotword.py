@@ -54,7 +54,14 @@ class HotwordManager:
                     
                     parts = line.split("|")
                     word = parts[0].strip()
-                    weight = float(parts[1].strip()) if len(parts) > 1 else 1.0
+                    weight = 1.0
+                    if len(parts) > 1:
+                        try:
+                            weight = float(parts[1].strip())
+                            weight = max(0.0, min(1.0, weight))
+                        except ValueError:
+                            logger.warning(f"无效的权重值: {parts[1]}，使用默认值 1.0")
+                            weight = 1.0
                     
                     if word:
                         self._hotwords[word] = weight

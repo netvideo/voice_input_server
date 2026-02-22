@@ -54,8 +54,14 @@ pip install -r requirements.txt
 **依赖说明:**
 - `qwen-asr>=0.0.6` - Qwen3-ASR 模型库
 - `torch>=2.0.0` - PyTorch 深度学习框架
+- `torchaudio>=2.0.0` - PyTorch 音频处理
 - `transformers>=4.36.0` - HuggingFace Transformers
+- `accelerate>=0.25.0` - 模型加速库
 - `websockets>=12.0` - WebSocket 服务端
+- `pyyaml>=6.0.1` - YAML 配置解析
+- `numpy>=1.24.0` - 数值计算
+- `librosa>=0.10.0` - 音频处理
+- `soundfile>=0.12.0` - 音频文件读写
 
 ### 2. 下载模型
 

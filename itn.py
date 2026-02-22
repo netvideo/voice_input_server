@@ -43,7 +43,7 @@ def itn(text, language='zh-CN'):
         return text
     text = re.sub(r'第([零一二三四五六七八九十百]+)(章|节|页|卷|部|集|篇)', _repl_chapter, text)
     text = re.sub(r'([零一二三四五六七八九十]{2,4})年', _repl_year, text)
-    text = re.sub(r'[零一二三四五六七八九十百千万]+', _repl_num, text)
+    text = re.sub(r'[零一二三四五六七八九十百千万亿]+', _repl_num, text)
     return text
 
 if __name__ == "__main__":

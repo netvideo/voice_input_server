@@ -20,42 +20,37 @@ def download_model(model_name: str, cache_dir: str = None):
     print()
     
     try:
-        from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor
-        
         # 设置缓存目录
         if cache_dir:
             os.environ["HF_HOME"] = cache_dir
             Path(cache_dir).mkdir(parents=True, exist_ok=True)
         
-        # 下载处理器
-        print("步骤 1/2: 下载处理器...")
-        processor = AutoProcessor.from_pretrained(model_name)
-        print("✓ 处理器下载完成")
-        
-        # 下载模型
-        print("\n步骤 2/2: 下载模型...")
+        print("正在使用 qwen_asr 库下载模型...")
         print("模型大小约 3-4GB，请耐心等待...")
+        print()
         
-        model = AutoModelForSpeechSeq2Seq.from_pretrained(
+        from qwen_asr import Qwen3ASRModel
+        
+        model = Qwen3ASRModel.from_pretrained(
             model_name,
-            low_cpu_mem_usage=True,
-            use_safetensors=True
+            dtype="float32",
+            device_map="cpu",
         )
         
         print("✓ 模型下载完成")
         print()
         
-        # 获取缓存路径
-        from transformers.utils import cached_file
-        model_path = cached_file(model_name, "config.json")
-        cache_path = Path(model_path).parent
-        
-        print(f"模型缓存路径: {cache_path}")
-        print()
         print("下载成功！现在可以启动服务端了。")
         print(f"运行: python server.py --model {model_name}")
         
         return True
+        
+    except ImportError:
+        print("\n✗ 未安装 qwen_asr 库")
+        print()
+        print("请先安装依赖:")
+        print("  pip install qwen-asr")
+        return False
         
     except Exception as e:
         print(f"\n✗ 下载失败: {e}")
