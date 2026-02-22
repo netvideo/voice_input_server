@@ -29,8 +29,8 @@ model:
 # 服务器配置
 server:
   host: "0.0.0.0"
-  port: 8765
-  max_connections: 5  # 最大并发连接数
+  port: 8080
+  max_connections: 10  # 最大并发连接数
   timeout: 300  # 会话超时时间（秒）
   
 # 音频配置

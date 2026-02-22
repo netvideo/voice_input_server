@@ -28,7 +28,7 @@ ENV PYTHONUNBUFFERED=1
 ENV HF_HOME=/app/model_cache
 
 # 暴露端口
-EXPOSE 8765
+EXPOSE 8080
 
 # 启动命令
 CMD ["python", "server.py", "--config", "config.yaml"]

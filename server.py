@@ -152,7 +152,7 @@ class ASRServer:
         # 服务器配置
         server_cfg = config.get("server", {})
         self.host = server_cfg.get("host", "0.0.0.0")
-        self.port = server_cfg.get("port", 8765)
+        self.port = server_cfg.get("port", 8080)
         self.max_connections = server_cfg.get("max_connections", 10)
         
         # 线程池 - 用于执行识别任务，避免阻塞事件循环
@@ -530,8 +530,8 @@ def load_config(config_path: str) -> dict:
         },
         "server": {
             "host": "0.0.0.0",
-            "port": 8765,
-            "max_connections": 5
+            "port": 8080,
+            "max_connections": 10
         },
         "audio": {
             "sample_rate": 16000,

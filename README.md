@@ -28,12 +28,14 @@
 - CUDA 11.8+ (GPU推理) 或 CPU
 - 8GB+ RAM
 
+> 📁 返回主项目: [README.md](../README.md)
+
 ## 快速开始
 
 ### 1. 安装依赖
 
 ```bash
-# 克隆仓库
+# 进入服务端目录
 cd voice_input_server
 
 # 创建虚拟环境
@@ -103,8 +105,8 @@ model:
 # 服务器配置
 server:
   host: "0.0.0.0"
-  port: 8765
-  max_connections: 5
+  port: 8080
+  max_connections: 10
   timeout: 300
   
 # 音频配置
@@ -398,7 +400,7 @@ docker build -t voice-asr-server .
 docker run -d \
   --name voice-asr \
   --gpus all \
-  -p 8765:8765 \
+  -p 8080:8080 \
   -v $(pwd)/model_cache:/app/model_cache \
   voice-asr-server
 ```
