@@ -149,7 +149,7 @@ class QwenASREngine:
             
             # 调用模型识别
             results = self.model.transcribe(
-                audio=audio_array,
+                audio=(audio_array, 16000),
                 context=context,
                 language=lang,
                 return_time_stamps=return_timestamps,
